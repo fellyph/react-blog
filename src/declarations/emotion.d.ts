@@ -8,10 +8,18 @@ declare module '@emotion/react' {
       secondary: string;
       accent: string;
       background: string;
+      backgroundDark: string;
     };
     fonts: {
       body: string;
       heading: string;
+    };
+    spacing: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
     };
   }
 }
