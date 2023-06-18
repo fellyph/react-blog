@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
 
-const StyledFooter = styled('footer')({
-  backgroundColor: '#282c34',
-  minHeight: '10vh',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-});
+const StyledFooter = styled('footer')`
+  background-color: ${(props) => props.theme.colors.backgroundDark};
+  min-height: 10vh;
+  color: ${(props) => props.theme.colors.primary};
+`;
 
 type FooterProps = {
   signature: string;
