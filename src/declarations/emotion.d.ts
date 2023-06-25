@@ -1,5 +1,9 @@
 import '@emotion/react';
 
+type TextProps = {
+  fontSize: string;
+  lineHeight: string;
+};
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
@@ -13,6 +17,10 @@ declare module '@emotion/react' {
     fonts: {
       body: string;
       heading: string;
+      h1: TextProps;
+      h2: TextProps;
+      h3: TextProps;
+      text: TextProps;
     };
     spacing: {
       xs: string;
