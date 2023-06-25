@@ -10,6 +10,7 @@ This project is a test for a few technologies, it was created using Vite with re
 
 ## Things to improve
 
+- Add checks for errors, data consistence and api problems...
 - The contrast between colours could be an accessibility issue
 - Add Coding split(Lazy loading) at the components
 - Add unit and e2e tests
