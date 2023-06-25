@@ -62,3 +62,41 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+/* GLOBAL STYLES */
+
+.wp-content {
+  .wp-block-embed,
+  .wp-block-image {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .wp-block-embed {
+    & iframe {
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  & img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  & pre {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    padding: 1em;
+    background-color: #f6efef;
+  }
+
+  & code {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    padding: 1em;
+    background-color: #f6efef;
+  }
+}
