@@ -5,6 +5,7 @@ const StyledFooter = styled('footer')`
   background-color: ${(props) => props.theme.colors.backgroundDark};
   min-height: 10vh;
   color: ${(props) => props.theme.colors.primary};
+  padding: 1rem;
 `;
 
 type FooterProps = {
