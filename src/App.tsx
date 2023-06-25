@@ -2,16 +2,21 @@ import React from 'react';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { Outlet } from 'react-router-dom';
-import { StyledWrapper } from './components/shared/Atoms';
+import { Loader, StyledWrapper } from './components/shared/Atoms';
+import { useGetSiteInfoQuery } from './service/api';
 
 function App() {
+  const { data: siteData, isLoading: siteDataIsLoading } = useGetSiteInfoQuery();
+
+  if (siteDataIsLoading) return <Loader>Loading...</Loader>;
+
   return (
     <>
-      <Header title="Welcome to React" subtitle="with TypeScript" />
+      <Header title={siteData.name} subtitle={siteData.description} />
       <StyledWrapper>
         <Outlet />
       </StyledWrapper>
-      <Footer signature="Fellyph Cintra" />
+      <Footer signature={siteData.name} />
     </>
   );
 }
