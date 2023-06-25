@@ -10,6 +10,7 @@ import Home from './components/views/home/Home';
 import ErrorPage from './components/views/error/ErrorPage.tsx';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { contentApi } from './service/api.ts';
+import Post from './components/views/post/Post.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/post/:id',
+        element: <Post />,
       },
     ],
   },
