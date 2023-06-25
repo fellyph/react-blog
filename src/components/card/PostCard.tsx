@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { Post } from '../../types/Post';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 type PostCardProps = {
-  postTitle: string;
-  postDescription: string;
-  postDate: string;
-  postCategory: string[];
+  post: Post;
+  excerpt?: boolean;
 };
 
 const StylePostCard = styled('div')`
@@ -47,21 +46,23 @@ const StyledPostCardMeta = styled('div')`
   gap: ${({ theme }) => theme.spacing.lg};
 `;
 
-const PostCard: FC<PostCardProps> = ({ postTitle, postCategory, postDate, postDescription }) => {
+const PostCard: FC<PostCardProps> = ({ post, excerpt = false }) => {
   return (
     <StylePostCard>
       <StyledPostCardHeader>
-        <StyledPostCardTitle>{postTitle}</StyledPostCardTitle>
+        <StyledPostCardTitle>
+          <Link to={`post/${post.id}`}>{post.title.rendered}</Link>
+        </StyledPostCardTitle>
         <StyledPostCardMeta>
-          <span>{postDate}</span>
+          <span>{post.date_gmt}</span>
           <StyledPostCategories>
-            {postCategory.map((category, index) => (
+            {post.categories.map((category, index) => (
               <li key={index}>{category}</li>
             ))}
           </StyledPostCategories>
         </StyledPostCardMeta>
       </StyledPostCardHeader>
-      <div>{postDescription}</div>
+      <div dangerouslySetInnerHTML={{ __html: excerpt ? post.excerpt.rendered : post.content.rendered }} />
     </StylePostCard>
   );
 };
