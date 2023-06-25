@@ -11,6 +11,7 @@ import ErrorPage from './components/views/error/ErrorPage.tsx';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { contentApi } from './service/api.ts';
 import Post from './components/views/post/Post.tsx';
+import Page from './components/views/page/Page.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/post/:id',
         element: <Post />,
+      },
+      {
+        path: '/page/:id',
+        element: <Page />,
       },
     ],
   },
