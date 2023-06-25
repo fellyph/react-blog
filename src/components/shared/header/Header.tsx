@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { StyledWrapper } from '../Atoms';
 import { Link } from 'react-router-dom';
+import Menu from '../menu/Menu';
 
 type HeaderProps = {
   title: string;
@@ -39,6 +40,7 @@ const Header: FC<HeaderProps> = ({ title, subtitle, ...restProps }) => {
           <Link to={'/'}>{title}</Link>
         </StyleTitle>
         <StyledSubtitle>{subtitle}</StyledSubtitle>
+        <Menu />
       </StyledWrapper>
     </StyledHeader>
   );
