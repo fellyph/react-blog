@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Post } from '../types/Post';
 import { SiteInfo } from '../types/SiteInfo';
+import { Page } from '../types/Page';
 
 type PostsResponse = Post[];
+type PagesResponse = Page[];
 
 export const contentApi = createApi({
   baseQuery: fetchBaseQuery({
@@ -15,8 +17,11 @@ export const contentApi = createApi({
     getPost: builder.query<Post, number>({
       query: (id) => `/wp/v2/posts/${id}`,
     }),
-    getPages: builder.query({
+    getPages: builder.query<PagesResponse, void>({
       query: () => '/wp/v2/pages',
+    }),
+    getPage: builder.query<Page, number>({
+      query: (id) => `/wp/v2/pages/${id}`,
     }),
     getSiteInfo: builder.query<SiteInfo, void>({
       query: () => '/',
@@ -25,4 +30,4 @@ export const contentApi = createApi({
   }),
 });
 
-export const { useGetPostsQuery, useGetPagesQuery, useGetPostQuery, useGetSiteInfoQuery } = contentApi;
+export const { useGetPostsQuery, useGetPagesQuery, useGetPageQuery, useGetPostQuery, useGetSiteInfoQuery } = contentApi;
