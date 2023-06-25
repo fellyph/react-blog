@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { StyledWrapper } from '../shared/Atoms';
+import { StyledWrapper } from '../Atoms';
+import { Link } from 'react-router-dom';
 
 type HeaderProps = {
   title: string;
@@ -16,6 +17,13 @@ const StyledHeader = styled('header')`
 const StyleTitle = styled('h1')`
   color: ${(props) => props.theme.colors.primary};
   fontsize: ${(props) => props.theme.fonts.h1.fontSize};
+
+  & a {
+    color: ${(props) => props.theme.colors.primary};
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const StyledSubtitle = styled('h2')`
@@ -27,7 +35,9 @@ const Header: FC<HeaderProps> = ({ title, subtitle, ...restProps }) => {
   return (
     <StyledHeader {...restProps}>
       <StyledWrapper>
-        <StyleTitle>{title}</StyleTitle>
+        <StyleTitle>
+          <Link to={'/'}>{title}</Link>
+        </StyleTitle>
         <StyledSubtitle>{subtitle}</StyledSubtitle>
       </StyledWrapper>
     </StyledHeader>

@@ -20,6 +20,7 @@ export const contentApi = createApi({
     }),
     getSiteInfo: builder.query<SiteInfo, void>({
       query: () => '/',
+      keepUnusedDataFor: 600000,
     }),
   }),
 });

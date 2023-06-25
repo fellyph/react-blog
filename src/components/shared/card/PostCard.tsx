@@ -1,38 +1,25 @@
 import React, { FC } from 'react';
-import { Post } from '../../types/Post';
+import { Post } from '../../../types/Post';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 type PostCardProps = {
   post: Post;
   excerpt?: boolean;
-};
+  isSingle?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const StylePostCard = styled('div')`
   border: 3px solid ${({ theme }) => theme.colors.primary};
   background: ${({ theme }) => theme.colors.background};
   box-shadow: 6px 6px 0 ${({ theme }) => theme.colors.primary};
   padding: ${({ theme }) => theme.spacing.md};
-  margin: ${({ theme }) => theme.spacing.md} auto;
+  margin: ${({ theme }) => theme.spacing.lg} auto;
 `;
 
 const StyledPostCardTitle = styled('h2')`
   color: ${({ theme }) => theme.colors.accent};
   margin-top: 0;
-`;
-
-const StyledPostCategories = styled('div')`
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
-
-  li {
-    background: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.secondary};
-    padding: 0.2rem 0.4rem;
-  }
 `;
 
 const StyledPostCardHeader = styled('header')`
@@ -46,20 +33,18 @@ const StyledPostCardMeta = styled('div')`
   gap: ${({ theme }) => theme.spacing.lg};
 `;
 
-const PostCard: FC<PostCardProps> = ({ post, excerpt = false }) => {
+const PostCard: FC<PostCardProps> = ({ post, excerpt = false, isSingle = false, ...restProps }) => {
+  const date = new Date(post.date_gmt);
+  const formattedDate = date.toLocaleDateString('en-US');
+
   return (
-    <StylePostCard>
+    <StylePostCard {...restProps}>
       <StyledPostCardHeader>
         <StyledPostCardTitle>
-          <Link to={`post/${post.id}`}>{post.title.rendered}</Link>
+          {isSingle ? post.title.rendered : <Link to={`post/${post.id}`}>{post.title.rendered}</Link>}
         </StyledPostCardTitle>
         <StyledPostCardMeta>
-          <span>{post.date_gmt}</span>
-          <StyledPostCategories>
-            {post.categories.map((category, index) => (
-              <li key={index}>{category}</li>
-            ))}
-          </StyledPostCategories>
+          <span>{formattedDate}</span>
         </StyledPostCardMeta>
       </StyledPostCardHeader>
       <div

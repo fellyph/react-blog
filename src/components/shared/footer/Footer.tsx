@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { StyledWrapper } from '../shared/Atoms';
+import { StyledWrapper } from '../Atoms';
 
 const StyledFooter = styled('footer')`
   background-color: ${(props) => props.theme.colors.backgroundDark};
