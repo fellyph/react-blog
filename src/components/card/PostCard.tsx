@@ -62,7 +62,10 @@ const PostCard: FC<PostCardProps> = ({ post, excerpt = false }) => {
           </StyledPostCategories>
         </StyledPostCardMeta>
       </StyledPostCardHeader>
-      <div dangerouslySetInnerHTML={{ __html: excerpt ? post.excerpt.rendered : post.content.rendered }} />
+      <div
+        className="wp-content"
+        dangerouslySetInnerHTML={{ __html: excerpt ? post.excerpt.rendered : post.content.rendered }}
+      />
     </StylePostCard>
   );
 };
