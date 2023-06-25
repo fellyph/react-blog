@@ -11,7 +11,7 @@ export const contentApi = createApi({
     getPosts: builder.query<PostsResponse, void>({
       query: () => '/posts',
     }),
-    getPost: builder.query({
+    getPost: builder.query<Post, number>({
       query: (id) => `/posts/${id}`,
     }),
     getPages: builder.query({
@@ -20,4 +20,4 @@ export const contentApi = createApi({
   }),
 });
 
-export const { useGetPostsQuery, useGetPagesQuery } = contentApi;
+export const { useGetPostsQuery, useGetPagesQuery, useGetPostQuery } = contentApi;
