@@ -11,7 +11,7 @@ const Post: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 
   return (
     <div {...props}>
-      {postDataIsLoading ? <Loader>Loading...</Loader> : <PostCard post={postData as Post} isSingle />}
+      {postDataIsLoading ? <Loader>Loading...</Loader> : <PostCard className="post" post={postData as Post} isSingle />}
     </div>
   );
 };
