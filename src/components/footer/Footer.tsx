@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
+import { StyledWrapper } from '../shared/Atoms';
 
 const StyledFooter = styled('footer')`
   background-color: ${(props) => props.theme.colors.backgroundDark};
@@ -15,7 +16,9 @@ type FooterProps = {
 const Footer: FC<FooterProps> = ({ signature, ...restProps }) => {
   return (
     <StyledFooter {...restProps}>
-      <p>{signature}</p>
+      <StyledWrapper>
+        <p>{signature}</p>
+      </StyledWrapper>
     </StyledFooter>
   );
 };

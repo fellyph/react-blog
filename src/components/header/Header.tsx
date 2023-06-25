@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
+import { StyledWrapper } from '../shared/Atoms';
 
 type HeaderProps = {
   title: string;
@@ -14,19 +15,21 @@ const StyledHeader = styled('header')`
 
 const StyleTitle = styled('h1')`
   color: ${(props) => props.theme.colors.primary};
-  fontsize: 'clamp(24px, 4vw, 48px)';
+  fontsize: ${(props) => props.theme.fonts.h1.fontSize};
 `;
 
 const StyledSubtitle = styled('h2')`
   color: ${(props) => props.theme.colors.secondary};
-  fontsize: 'clamp(16px, 2vw, 24px)';
+  fontsize: ${(props) => props.theme.fonts.h2.fontSize};
 `;
 
 const Header: FC<HeaderProps> = ({ title, subtitle, ...restProps }) => {
   return (
     <StyledHeader {...restProps}>
-      <StyleTitle>{title}</StyleTitle>
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledWrapper>
+        <StyleTitle>{title}</StyleTitle>
+        <StyledSubtitle>{subtitle}</StyledSubtitle>
+      </StyledWrapper>
     </StyledHeader>
   );
 };
