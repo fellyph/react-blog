@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 import { Post } from '../../../types/Post';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { Page } from '../../../types/Page';
 
 type PostCardProps = {
-  post: Post;
+  post: Post | Page;
   excerpt?: boolean;
   isSingle?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
